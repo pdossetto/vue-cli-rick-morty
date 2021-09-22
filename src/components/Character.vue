@@ -3,7 +3,7 @@
     <img class="img-fluid mb-3" :src="info.image" :alt="info.name">
     <h4>{{ info.name }}</h4>
     <div>{{ info.origin }}</div>
-    <div>{{ info.species }}</div>
+    <div class="fw-bold">{{ info.species }}</div>
   </div>
 </template>
 

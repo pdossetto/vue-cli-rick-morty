@@ -3,6 +3,7 @@
     <Header msg="Rick and Morty App" />
 
     <CharactersList />
+
   </div>
 </template>
 

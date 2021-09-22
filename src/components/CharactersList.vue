@@ -1,28 +1,32 @@
 <template>
   <section class="container">
-    <div class="row">
+    <div v-if="!loading" class="row">
       <!-- Stampo la lista dei personaggi ottenuta tramite Axios API -->
       <div v-for="(character, index) in charactersList" :key="index" class="col-6 col-md-4 col-lg-3 mb-5">
         <Character :info="character" />
       </div>
-
     </div>
+
+    <Loader v-else />
   </section>
 </template>
 
 <script>
 import axios from 'axios';
-import Character from "./Character.vue";
+import Character from './Character.vue';
+import Loader from './Loader.vue';
 
 export default {
   name: 'CharactersList',
   components: {
-    Character
+    Character,
+    Loader
   },
   data() {
     return {
       APIUrl: 'https://api.sampleapis.com/rickandmorty/characters',
-      charactersList: []
+      charactersList: [],
+      loading: true
     }
   },
   created() {
@@ -35,7 +39,11 @@ export default {
           .then( res => {
             // console.log(res.data);
             this.charactersList = res.data;
-
+            //setTimeout( () => {this.loading = false; }, 5000);
+            this.loading = false;
+          })
+          .catch( err => {
+            console.log("Error ", err);
           })
     }
   }
