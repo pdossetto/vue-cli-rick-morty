@@ -1,15 +1,24 @@
 <template>
   <section class="container">
     <div class="row">
-      <!-- TODO: Stampo la lista dei personaggi ottenuta tramite Axios API -->
+      <!-- Stampo la lista dei personaggi ottenuta tramite Axios API -->
+      <div v-for="(character, index) in charactersList" :key="index" class="col-6 col-md-4 col-lg-3 mb-5">
+        <Character :info="character" />
+      </div>
+
     </div>
   </section>
 </template>
 
 <script>
 import axios from 'axios';
+import Character from "./Character.vue";
+
 export default {
   name: 'CharactersList',
+  components: {
+    Character
+  },
   data() {
     return {
       APIUrl: 'https://api.sampleapis.com/rickandmorty/characters',
@@ -26,7 +35,7 @@ export default {
           .then( res => {
             // console.log(res.data);
             this.charactersList = res.data;
-            
+
           })
     }
   }
