@@ -1,0 +1,20 @@
+// Import Bootstrap
+// Modalità 1
+// @import 'bootstrap';
+// Modalità 2
+@import '~bootstrap/scss/bootstrap';
+
+@import '~@fontsource/montserrat/index.css';
+@import '~@fontsource/montserrat/700.css';
+
+
+// Importo file con le variabili
+@import './vars';
+
+body {
+    font-family: $main-font;
+}
+
+h1 {
+    font-weight: 700;
+}
