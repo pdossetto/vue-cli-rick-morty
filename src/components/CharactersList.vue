@@ -7,11 +7,30 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
-  name: 'Header',
-  props: {
-    msg: String
+  name: 'CharactersList',
+  data() {
+    return {
+      APIUrl: 'https://api.sampleapis.com/rickandmorty/characters',
+      charactersList: []
+    }
+  },
+  created() {
+    this.getCharacters();
+  },
+  methods: {
+    getCharacters() {
+      axios
+          .get(this.APIUrl)
+          .then( res => {
+            // console.log(res.data);
+            this.charactersList = res.data;
+            
+          })
+    }
   }
+
 }
 </script>
 
