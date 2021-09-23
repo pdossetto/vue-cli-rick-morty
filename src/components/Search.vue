@@ -11,7 +11,7 @@
         <button
             type="submit"
             class="btn btn-primary"
-            @click.prevent="$emit('performSearch', inputText)"
+            @click.prevent="$emit(('performSearch', inputText))"
         >
             Search
         </button>
